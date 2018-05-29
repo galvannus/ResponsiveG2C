@@ -35,8 +35,8 @@ gem 'haml-rails'
 gem 'devise'
 #flexbox
 gem 'flexbox_rb'
-#mysql
-gem 'mysql2', '~> 0.4.2'
+#PostgressQL
+gem 'pg'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
