@@ -6,10 +6,6 @@
 #
 default: &default
   adapter: postgresql
-  encoding: unicode
-  port: 5432
-  username: alejandro
-  password:
   pool: 5
   timeout: 5000
 

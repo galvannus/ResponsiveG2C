@@ -3,13 +3,14 @@
 		%span.mdl-layout-title Servicios del gobierno
 		.mdl-layout-spacer
 		%nav.mdl-navigation.mdl-layout--large-screen-only
-			-if user_signed_in?
-				=link_to "Cerrar sesión",destroy_user_session_path, method: :delete,class:"white-text"
+			-#if user_signed_in?
+				=#link_to "Cerrar sesión",destroy_user_session_path, method: :delete,class:"white-text"
 
 .mdl-layout__drawer
 	%span.mdl-layout-title Menu
 	%nav.mdl-navigation
-		%a.mdl-navigation__link{"data-method" => "delete",href:"/users/sign_out"} Cerrar sesión
+		-if user_signed_in?
+			%a.mdl-navigation__link{"data-method" => "delete",href:"/users/sign_out"} Cerrar sesión
 		<a class="mdl-navigation__link" href="">Link</a>
 		<a class="mdl-navigation__link" href="">Link</a>
 		<a class="mdl-navigation__link" href="">Link</a>
