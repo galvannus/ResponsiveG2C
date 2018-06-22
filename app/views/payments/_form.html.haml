@@ -1,0 +1,24 @@
+= form_for @payment do |f|
+  - if @payment.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@payment.errors.count, "error")} prohibited this payment from being saved:"
+      %ul
+        - @payment.errors.full_messages.each do |message|
+          %li= message
+
+  .field
+    = f.label :amount
+    = f.text_field :amount
+
+    = f.hidden_field :user_id, value: current_user.id
+    = f.hidden_field :service_id, value: params[:service_id]
+  .actions
+    = f.submit 'Pagar',onclick:" return convertir()"
+
+:javascript
+  function(){
+    let valor = document.getElementById("payment_amount").value
+    let valor2 = document.getElementById("payment_amount").value
+    document.getElementById("payment_amount").value = valor - valor2;
+  }
+  

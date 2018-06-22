@@ -21,9 +21,9 @@
 		= '$'
 		= @service.cost
 		= ' pesos'
--if @service.cost.present?
-	%a.btn.btn-warning{:href => "/contracts/new?service_id=#{@service.id}"} Pagar servicio
--else
+-if @service.cost.present? and current_user.present?
+	%a.btn.btn-warning{:href => "/payments/new?service_id=#{@service.id}&cost=#{@service.cost}"} Pagar servicio
+-if current_user.present? and @service.cost == nil
 	%a.btn.btn-warning{:href => "/contracts/new?service_id=#{@service.id}"} Contratar servicio
 \|
 = link_to 'Back', services_path,class:"btn btn-danger"

@@ -5,4 +5,5 @@ class Service < ApplicationRecord
 
 	belongs_to :category
 	has_many :contracts, dependent: :destroy
+	has_many :payments
 end
