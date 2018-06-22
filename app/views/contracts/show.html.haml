@@ -1,0 +1,16 @@
+%p#notice= notice
+
+%h1 Datos de la cita
+%p
+  %b Fecha:
+  = @contract.date
+%p
+  %b Hora:
+  = @contract.hour.strftime("%I:%M %p")
+%p
+  %b Servicio:
+  = @contract.service.name
+
+= link_to 'Edit', edit_contract_path(@contract)
+\|
+= link_to 'Back', contracts_path,class:"btn btn-danger"

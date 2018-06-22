@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :contracts
+  resources :categories
+  resources :services
   devise_for :users
   get 'home/index'
 

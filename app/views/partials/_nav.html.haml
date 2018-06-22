@@ -1,16 +1,17 @@
-%header.mdl-layout__header
-	.mdl-layout__header-row
-		%span.mdl-layout-title Servicios del gobierno
-		.mdl-layout-spacer
-		%nav.mdl-navigation.mdl-layout--large-screen-only
-			-#if user_signed_in?
-				=#link_to "Cerrar sesión",destroy_user_session_path, method: :delete,class:"white-text"
+%nav.navbar.navbar-expand-lg.navbar-light.bg-primary
+	%a.navbar-brand{:href => "#"} Navbar
+	%button.navbar-toggler{"aria-controls" => "navbarNavAltMarkup", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarNavAltMarkup", "data-toggle" => "collapse", :type => "button"}
+		%span.navbar-toggler-icon
+	#navbarNavAltMarkup.collapse.navbar-collapse
+		.navbar-nav
+			%a.nav-item.nav-link.active{:href => "#"}
+				Home
+				%span.sr-only (current)
+			%a.nav-item.nav-link{:href => "/services"} Servicios
+			-if user_signed_in?
+				%a.nav-item.nav-link{"data-method" => "delete",href:"/users/sign_out"} Cerrar sesión
+			-else
+				%a.nav-item.nav-link{:href => "/users/sign_in"} Iniciar sesión
+-#if user_signed_in?
+	=#link_to "Cerrar sesión",destroy_user_session_path, method: :delete,class:"white-text"
 
-.mdl-layout__drawer
-	%span.mdl-layout-title Menu
-	%nav.mdl-navigation
-		-if user_signed_in?
-			%a.mdl-navigation__link{"data-method" => "delete",href:"/users/sign_out"} Cerrar sesión
-		<a class="mdl-navigation__link" href="">Link</a>
-		<a class="mdl-navigation__link" href="">Link</a>
-		<a class="mdl-navigation__link" href="">Link</a>

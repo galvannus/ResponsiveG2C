@@ -1,0 +1,28 @@
+%p#notice= notice
+
+%img.img-fluid
+	=image_tag @service.avatar.url(:thumb),height:200
+%p
+	%b Name:
+	= @service.name
+%p
+	%b Detail:
+	= @service.detail
+%p
+	%b Openhour:
+	= @service.openhour
+%p
+	%b Closehour:
+	= @service.closehour
+%p
+	%b Costo:
+	= '$'
+	= @service.cost
+	= ' pesos'
+-if @service.cost.present?
+	%a.btn.btn-warning{:href => "/contracts/new?service_id=#{@service.id}"} Pagar servicio
+-else
+	%a.btn.btn-warning{:href => "/contracts/new?service_id=#{@service.id}"} Contratar servicio
+\|
+= link_to 'Back', services_path,class:"btn btn-danger"
+=# link_to 'Edit', edit_service_path(@service)

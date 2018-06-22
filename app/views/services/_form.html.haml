@@ -1,0 +1,31 @@
+= form_for @service, html: { multipart: true } do |f|
+  - if @service.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@service.errors.count, "error")} prohibited this service from being saved:"
+      %ul
+        - @service.errors.full_messages.each do |message|
+          %li= message
+
+  .field
+    = f.label :nombre
+    = f.text_field :name
+  .field
+    = f.label :detalles
+    = f.text_field :detail
+  .field
+    = f.label :openhour
+    = f.time_field :openhour
+  .field
+    = f.label :closehour
+    = f.time_field :closehour
+  .field
+    = f.label :costo
+    = f.text_field :cost
+  .field
+    =f.label "Categoría"
+    = f.collection_select(:category_id, Category.all, :id, :name, {},{:multiple =>false})
+  .field
+    =f.label "Elige la imagen de tu servicio"
+    = f.file_field :avatar
+  .actions
+    = f.submit 'Save'

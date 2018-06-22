@@ -37,6 +37,8 @@ gem 'devise'
 gem 'flexbox_rb'
 #PostgressQL
 gem 'pg'
+#Perperclip
+gem "paperclip", "~> 6.0.0"
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
