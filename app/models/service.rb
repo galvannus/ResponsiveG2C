@@ -4,5 +4,5 @@ class Service < ApplicationRecord
 	validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
 
 	belongs_to :category
-	has_many :contracts
+	has_many :contracts, dependent: :destroy
 end

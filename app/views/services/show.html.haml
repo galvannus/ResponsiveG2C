@@ -14,11 +14,13 @@
 %p
 	%b Closehour:
 	= @service.closehour
-%p
-	%b Costo:
-	= '$'
-	= @service.cost
-	= ' pesos'
+	
+- if @service.cost.present?
+	%p
+		%b Costo:
+		= '$'
+		= @service.cost
+		= ' pesos'
 -if @service.cost.present?
 	%a.btn.btn-warning{:href => "/contracts/new?service_id=#{@service.id}"} Pagar servicio
 -else

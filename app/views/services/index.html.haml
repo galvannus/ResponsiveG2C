@@ -1,6 +1,7 @@
 .container.mb-5
 	%h3 Servicios
-	%p.lead Categorias
+	-if current_user.present? and current_user.type_user == "administrador"
+		= link_to 'Nuevo servicio', new_service_path
 	%hr/
 	.row
 
@@ -28,7 +29,7 @@
 									%p 
 										=service.detail
 									%a.btn.btn-warning.btn-sm{:href => "/services/#{service.id}"} Leer mas...
-									- if current_user.type_user == "administrador"
+									- if current_user.present? and current_user.type_user == "administrador"
 										%p
 											= link_to 'Edit', edit_service_path(service)
 											= link_to 'Destroy', service, method: :delete, data: { confirm: 'Are you sure?' }
@@ -46,6 +47,3 @@
 						Someone famous in
 						%cite{:title => "Source Title"} Source Title
 
-%br
-
-= link_to 'New Service', new_service_path
