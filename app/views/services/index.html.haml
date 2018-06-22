@@ -4,34 +4,37 @@
 	%hr/
 	.row
 
-		- @services.each do |service|
+		- if @services.present?
+			- @services.each do |service|
 
-			.col-md-9.col-12
-				.row.mb-5
-					.col-3
-						%img.img-fluid
-							=image_tag service.avatar.url(:thumb),height:130
-						%p.lead.text-center
-							=service.created_at.strftime("%b %d, %Y")
-					.col-md-9
-						.row
-							.col
-								%a{:href => "/services/#{service.id}"}
-									%h3
-										=service.name
-								%b="Categoría:"
-								%a{:href => ""}
-									%span.badge.badge-primary
-										=service.category.name
+				.col-md-9.col-12
+					.row.mb-5
+						.col-3
+							%img.img-fluid
+								=image_tag service.avatar.url(:thumb),height:130
+							%p.lead.text-center
+								=service.created_at.strftime("%b %d, %Y")
+						.col-md-9
+							.row
+								.col
+									%a{:href => "/services/#{service.id}"}
+										%h3
+											=service.name
+									%b="Categoría:"
+									%a{:href => ""}
+										%span.badge.badge-primary
+											=service.category.name
 
-								%p 
-									=service.detail
-								%a.btn.btn-warning.btn-sm{:href => "/services/#{service.id}"} Leer mas...
-								- if current_user.type_user == "administrador"
-									%p
-										= link_to 'Edit', edit_service_path(service)
-										= link_to 'Destroy', service, method: :delete, data: { confirm: 'Are you sure?' }
-										=# link_to 'Show', service
+									%p 
+										=service.detail
+									%a.btn.btn-warning.btn-sm{:href => "/services/#{service.id}"} Leer mas...
+									- if current_user.type_user == "administrador"
+										%p
+											= link_to 'Edit', edit_service_path(service)
+											= link_to 'Destroy', service, method: :delete, data: { confirm: 'Are you sure?' }
+											=# link_to 'Show', service
+		-else
+			= 'No se encuentran servicios...'
 	/ aside
 	.col-md-3.col-12.ml-auto
 		/ Cards
